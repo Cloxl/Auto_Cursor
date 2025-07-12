@@ -1,0 +1,80 @@
+global:
+  max_concurrency: 100
+  timeout: 30
+  retry_times: 3
+database:
+  path: data/cursor.db
+  pool_size: 10
+proxy:
+  use_local_proxy: true
+  api_url: http://127.0.0.1:7890
+  batch_size: 10
+  check_interval: 300
+register:
+  delay_range:
+  - 1
+  - 3
+  batch_size: 5
+  max_accounts: -1
+  batch_interval: 30
+  timeout: 60
+  use_fake_domain: true
+email:
+  provider: local
+  file_path: o2.txt
+  local_url: http://127.0.0.1:8000/get_account
+  local_auth: your_local_auth_token
+  local_num: 10
+outlook_api:
+  api_key: your_outlook_api_key
+captcha:
+  provider: custom
+  capsolver:
+    api_key: your_capsolver_api_key
+    website_url: https://authenticator.cursor.sh
+    website_key: 0x4AAAAAAAMNIvC45A4Wjjln
+  yescaptcha:
+    client_key: your_yescaptcha_client_key
+    website_url: https://authenticator.cursor.sh
+    website_key: 0x4AAAAAAAMNIvC45A4Wjjln
+    use_cn_server: true
+  custom:
+    api_url: http://111.180.197.234:8846/tokens
+    limit_param: limit
+    status_param: status
+    status_value: '0'
+    token_key: tokens
+    headers:
+      Accept-Encoding: gzip, deflate, br
+      Connection: keep-alive
+      User-Agent: PostmanRuntime-ApipostRuntime/1.1.0
+      accept: application/json
+      x-api-key: your_custom_api_key
+qq_imap:
+  enabled: false
+  qq_email: your_qq_email@qq.com
+  qq_password: your_qq_auth_code
+  domains:
+  - cursormmsl.shop
+  domain_quota: 0
+  imap_server: imap.qq.com
+  imap_port: 993
+
+# 椰子API手机号服务配置
+phone_service:
+  enabled: true
+  provider: yezi  # 椰子API
+  yezi:
+    api_url: http://api.sqhyw.net:90
+    backup_url: http://api.xuce.top:90  # 备用域名
+    username: your_username  # 椰子平台用户名
+    password: your_password  # 椰子平台密码
+    project_id: "825175"
+    country_code: "86"
+    timeout: 60
+    max_retries: 3
+    # 椰子API相关端点
+    login_endpoint: /api/logins
+    get_phone_endpoint: /api/get_mobile
+    get_sms_endpoint: /api/get_message
+    free_phone_endpoint: /api/free_mobile
